@@ -1,12 +1,16 @@
 import { component$ } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
+import  Section  from "~/layout/containers/Section";
 
 
 export default component$(() => {
   return (
     <>
-    <section class="bg-sky-200">
-      <div class="container py-12">
+      
+      <Section
+        bgColor="bg-sky-200"
+        container={true}
+      >
        <h1 class="text-center mb-10">Bienvenue sur v-lock !</h1>
        <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus doloremque, quas similique officiis adipisci recusandae veritatis dignissimos quibusdam iste asperiores quo consequuntur officia consectetur hic cumque maxime autem vitae! Aperiam.
@@ -18,10 +22,8 @@ export default component$(() => {
           Obcaecati, ut dolores. Hic eligendi quam qui suscipit, dolorum quas nostrum culpa ea temporibus error! Consectetur quod voluptatum temporibus eum minima quas? Deleniti quas harum nostrum quibusdam! Tempora, aliquam fugiat?
 
        </p>
-      </div>
-    </section>
-    <section class="py-8">
-      <div class="container">
+      </Section>
+      <Section>
         <h2>Nos services</h2>
         <div class="flex">
         <article>
@@ -59,8 +61,8 @@ export default component$(() => {
         </article>
         </div>
        
-      </div>
-    </section>
+        </Section>
+   
 
     </>
   );
