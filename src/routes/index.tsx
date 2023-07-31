@@ -1,102 +1,67 @@
 import { component$ } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
 
-import Counter from "~/components/starter/counter/counter";
-import Hero from "~/components/starter/hero/hero";
-import Infobox from "~/components/starter/infobox/infobox";
-import Starter from "~/components/starter/next-steps/next-steps";
 
 export default component$(() => {
   return (
     <>
-      <Hero />
-      <Starter />
+    <section class="bg-sky-200">
+      <div class="container py-12">
+       <h1 class="text-center mb-10">Bienvenue sur v-lock !</h1>
+       <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus doloremque, quas similique officiis adipisci recusandae veritatis dignissimos quibusdam iste asperiores quo consequuntur officia consectetur hic cumque maxime autem vitae! Aperiam.
+          Sed ipsam aut excepturi distinctio, voluptas totam sapiente laborum laudantium! Iusto fugiat voluptates numquam, ab accusamus illo consectetur officiis similique consequuntur facere sed quis quasi minima, suscipit sint quos. Maiores.
+          Aperiam aliquam, enim libero ab nisi expedita error veniam, suscipit, blanditiis ipsa saepe corporis? Harum at veniam quisquam incidunt libero cupiditate repellendus doloribus, architecto possimus. Recusandae debitis corrupti assumenda ab!
+          Minima, nemo est qui perspiciatis aut nam molestiae praesentium, quis deleniti blanditiis odio ipsum beatae dicta explicabo minus voluptates! Dolorem unde hic quo non dolorum in, facere nulla quibusdam numquam?
+          Repellat aut voluptate molestias sequi quam voluptatem a suscipit modi sed id. Sequi consequuntur quaerat porro illo totam non sint est, quae delectus cum hic consequatur aut autem corporis eveniet?
+          Placeat architecto, non quae aliquam delectus earum consequuntur? Illo, magni eum ipsam facilis libero ex in sequi aliquid culpa, laboriosam praesentium assumenda ducimus expedita magnam eius aspernatur repellendus dolore laudantium.
+          Obcaecati, ut dolores. Hic eligendi quam qui suscipit, dolorum quas nostrum culpa ea temporibus error! Consectetur quod voluptatum temporibus eum minima quas? Deleniti quas harum nostrum quibusdam! Tempora, aliquam fugiat?
 
-      <div role="presentation" class="ellipsis"></div>
-      <div role="presentation" class="ellipsis ellipsis-purple"></div>
-
-      <div class="container container-center container-spacing-xl">
-        <h3>
-          You can <span class="highlight">count</span>
-          <br /> on me
-        </h3>
-        <Counter />
+       </p>
       </div>
-
-      <div class="container container-flex">
-        <Infobox>
-          <div q:slot="title" class="icon icon-cli">
-            CLI Commands
-          </div>
-          <>
-            <p>
-              <code>npm run dev</code>
-              <br />
-              Starts the development server and watches for changes
+    </section>
+    <section class="py-8">
+      <div class="container">
+        <h2>Nos services</h2>
+        <div class="flex">
+        <article>
+          <h3>Service 1</h3>
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquam, sint! Et quasi quibusdam voluptatem, illo alias repellat ducimus nemo ratione dolores ab magnam molestiae quia veritatis rem voluptatibus fuga harum?
+            Tempore tenetur ullam nihil accusantium adipisci aspernatur reiciendis illo. Maxime laboriosam optio, vel cum eligendi nostrum deserunt porro necessitatibus magnam quo totam sint ut sunt voluptate, officia, pariatur dolorem? Corporis?
+            Minima minus excepturi saepe temporibus atque, expedita consectetur adipisci est eveniet in eum sapiente! Autem voluptatibus, eius commodi cum ad ullam voluptas earum exercitationem eos, soluta dignissimos deserunt sunt consectetur.
+            Assumenda quas quisquam blanditiis? Distinctio ad laborum modi? Tempora perspiciatis excepturi ad aut laborum maxime inventore quisquam vitae similique suscipit dolor, minima facere iusto, voluptate libero quia sequi asperiores at.
             </p>
-            <p>
-              <code>npm run preview</code>
-              <br />
-              Creates production build and starts a server to preview it
+        </article>
+        <article>
+          <h3>Service 1</h3>
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquam, sint! Et quasi quibusdam voluptatem, illo alias repellat ducimus nemo ratione dolores ab magnam molestiae quia veritatis rem voluptatibus fuga harum?
+            Tempore tenetur ullam nihil accusantium adipisci aspernatur reiciendis illo. Maxime laboriosam optio, vel cum eligendi nostrum deserunt porro necessitatibus magnam quo totam sint ut sunt voluptate, officia, pariatur dolorem? Corporis?
+            Minima minus excepturi saepe temporibus atque, expedita consectetur adipisci est eveniet in eum sapiente! Autem voluptatibus, eius commodi cum ad ullam voluptas earum exercitationem eos, soluta dignissimos deserunt sunt consectetur.
+            Assumenda quas quisquam blanditiis? Distinctio ad laborum modi? Tempora perspiciatis excepturi ad aut laborum maxime inventore quisquam vitae similique suscipit dolor, minima facere iusto, voluptate libero quia sequi asperiores at.
             </p>
-            <p>
-              <code>npm run build</code>
-              <br />
-              Creates production build
+        </article>
+        <article>
+          <h3>Service 1</h3>
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquam, sint! Et quasi quibusdam voluptatem, illo alias repellat ducimus nemo ratione dolores ab magnam molestiae quia veritatis rem voluptatibus fuga harum?
+            Tempore tenetur ullam nihil accusantium adipisci aspernatur reiciendis illo. Maxime laboriosam optio, vel cum eligendi nostrum deserunt porro necessitatibus magnam quo totam sint ut sunt voluptate, officia, pariatur dolorem? Corporis?
+            Minima minus excepturi saepe temporibus atque, expedita consectetur adipisci est eveniet in eum sapiente! Autem voluptatibus, eius commodi cum ad ullam voluptas earum exercitationem eos, soluta dignissimos deserunt sunt consectetur.
+            Assumenda quas quisquam blanditiis? Distinctio ad laborum modi? Tempora perspiciatis excepturi ad aut laborum maxime inventore quisquam vitae similique suscipit dolor, minima facere iusto, voluptate libero quia sequi asperiores at.
+            Accusantium ab soluta exercitationem facilis fuga quisquam fugit quidem eveniet similique! Ullam ut incidunt, nesciunt nemo cumque veniam obcaecati quisquam reiciendis consequuntur sequi, officia porro distinctio sit pariatur neque quos?
+            Mollitia modi laboriosam quibusdam excepturi dicta adipisci facilis odio dolorum consectetur, libero iure officia nulla error commodi beatae nam perspiciatis ea aperiam, ex in quos aut ad veritatis. Hic, nesciunt?
+            Sunt laudantium, inventore recusandae ad corporis dolor in, aliquam porro nisi eveniet facere ipsa, fuga quod reprehenderit voluptates nam repellendus voluptatibus. Eligendi distinctio, illo praesentium vel nam odio consequatur. Deserunt!
+            Sapiente, ea. Blanditiis tempore voluptas quo porro distinctio quis alias iusto! Alias voluptatibus dignissimos animi temporibus asperiores saepe, eos quis. Cupiditate obcaecati omnis velit necessitatibus, amet qui dolor expedita odio!
+            Tempore doloribus aspernatur fugit unde, architecto eos molestias nihil quaerat ducimus sint optio ullam facere distinctio eum in iste quidem deleniti officia repellendus error. Nesciunt corporis suscipit vitae dignissimos eligendi!
+            Quod molestiae, placeat fugiat culpa non nisi? Magni, odit laborum? Repellendus iusto quod neque non dolorum deserunt, ab, harum nam eius eligendi impedit. Eaque pariatur expedita tenetur voluptatum et voluptates.
             </p>
-            <p>
-              <code>npm run qwik add</code>
-              <br />
-              Runs the qwik CLI to add integrations
-            </p>
-          </>
-        </Infobox>
-
-        <div>
-          <Infobox>
-            <div q:slot="title" class="icon icon-apps">
-              Example Apps
-            </div>
-            <p>
-              Have a look at the <a href="/demo/flower">Flower App</a> or the{" "}
-              <a href="/demo/todolist">Todo App</a>.
-            </p>
-          </Infobox>
-
-          <Infobox>
-            <div q:slot="title" class="icon icon-community">
-              Community
-            </div>
-            <ul>
-              <li>
-                <span>Questions or just want to say hi? </span>
-                <a href="https://qwik.builder.io/chat" target="_blank">
-                  Chat on discord!
-                </a>
-              </li>
-              <li>
-                <span>Follow </span>
-                <a href="https://twitter.com/QwikDev" target="_blank">
-                  @QwikDev
-                </a>
-                <span> on Twitter</span>
-              </li>
-              <li>
-                <span>Open issues and contribute on </span>
-                <a href="https://github.com/BuilderIO/qwik" target="_blank">
-                  GitHub
-                </a>
-              </li>
-              <li>
-                <span>Watch </span>
-                <a href="https://qwik.builder.io/media/" target="_blank">
-                  Presentations, Podcasts, Videos, etc.
-                </a>
-              </li>
-            </ul>
-          </Infobox>
+        </article>
         </div>
+       
       </div>
+    </section>
+
     </>
   );
 });
