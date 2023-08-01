@@ -15,9 +15,9 @@ export default component$<IMapProps>((props) => {
     useVisibleTask$(() => {
 
         navigator.geolocation.getCurrentPosition((position) => {
-            gpsCoordinates.x = position.coords.latitude;
-            gpsCoordinates.y = position.coords.longitude;
-        })   
+        gpsCoordinates.x = position.coords.latitude;
+        gpsCoordinates.y = position.coords.longitude;
+    })   
 
 
         import("leaflet").then((L)=>{

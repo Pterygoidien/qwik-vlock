@@ -1,23 +1,38 @@
-import { component$, useStore,  useVisibleTask$ } from "@builder.io/qwik";
+import { component$, useStore,    useVisibleTask$ } from "@builder.io/qwik";
 import Map from "~/components/map/Map";
 
 export default component$(() => {
+
     const gpsCoordinates = useStore({
-        x: 50.64596,
-        y: 5.57806,
+        x: 50.64250,
+        y: 5.58570,
     })
 
-    useVisibleTask$(() => {
-        navigator.geolocation.getCurrentPosition((position) => {
-            gpsCoordinates.x = position.coords.latitude;
-            gpsCoordinates.y = position.coords.longitude;
-        })    
+
+    useVisibleTask$(({track}) => {
+        track(()=>
+        {
+            if(gpsCoordinates.x==50.64250 || gpsCoordinates.y==5.58570)
+            {
+                navigator.geolocation.getCurrentPosition((position) => {
+                gpsCoordinates.x = position.coords.latitude;
+                gpsCoordinates.y = position.coords.longitude;
+                }) 
+            } 
+        });
+
+          
     });
+    //now let's do it with useTask instead
+
+   
+
 
     return(
         <>
             <section>
-                <Map gpsCoordinates={gpsCoordinates} />
+                
+              {gpsCoordinates && <Map gpsCoordinates={gpsCoordinates} />}
             </section>
         </>
     )
@@ -31,10 +46,10 @@ export default component$(() => {
      * "osm_type": string,
      * "osm_id": number,
      * "lat": string,
-     * "lon": string,
+     * "}lon": string,
      * "place_rank": number,
      * "category": string[],
-     * "type": string,
+     * type": string,
      * "importance": number,
      * "addresstype": string,
      * "name": string,
