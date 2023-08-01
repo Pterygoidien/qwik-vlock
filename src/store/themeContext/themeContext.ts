@@ -1,7 +1,7 @@
 import { createContextId } from "@builder.io/qwik";
 
 export interface IThemeContext{
- 
+    isDarkMode:boolean;
 
 }
 

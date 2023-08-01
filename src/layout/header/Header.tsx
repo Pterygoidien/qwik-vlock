@@ -7,7 +7,7 @@ import styles from "./Header.module.css?inline";
 export default component$(() => {
     useStylesScoped$(styles);
     
-    const theme = useContext(ThemeContext);
+    const themeCtx = useContext(ThemeContext);
 
     return (
         <header class="flex ">
@@ -33,7 +33,12 @@ export default component$(() => {
                                         
                         </li>
                         <li>
-                            {theme.isDarkMode ? "Mode sombre":"Mode clair" }
+
+                            <button class="bg-sky-500 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded" 
+                            onClick$={() => themeCtx.isDarkMode = !themeCtx.isDarkMode}>
+                                {themeCtx.isDarkMode ? "Mode sombre":"Mode clair" }
+                            </button>
+                            
                         </li>
                     </ul>
                 </div>
