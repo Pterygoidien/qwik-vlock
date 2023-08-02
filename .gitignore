@@ -42,3 +42,4 @@ lerna-debug.log*
 
 # assets and media
 /src/assets
+/public/assets

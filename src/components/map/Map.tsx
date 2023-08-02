@@ -96,10 +96,10 @@ export default component$(() => {
                 })
                 .addTo(map)
                 .bindPopup('Vous êtes ici').openPopup();
-
             setTimeout(() => {
                     map.setView([gpsCoordinates.lat!, gpsCoordinates.long!], 13);
                 }, 2000);
+
 
                 
                 
