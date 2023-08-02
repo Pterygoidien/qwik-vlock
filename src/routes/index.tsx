@@ -69,11 +69,65 @@ export default component$(() => {
 });
 
 export const head: DocumentHead = {
-  title: "Welcome to Qwik",
+  title: "Parkings à vélo sécurisés en Wallonie | v-lock",
   meta: [
     {
       name: "description",
-      content: "Qwik site description",
+      content: "v-lock est une application qui vous permet de trouver des parkings à vélo sécurisés en Wallonie.",
+    },
+    // Open Graph
+    {
+      property: "og:title",
+      content: "Parkings à vélo sécurisés en Wallonie | v-lock",
+    },
+    {
+      property: "og:description",
+      content: "v-lock est une application qui vous permet de trouver des parkings à vélo sécurisés en Wallonie.",
+    },
+    {
+      property: "og:image",
+      content: "https://v-lock.be/assets/logo/logo-vlock.png",
+    },
+    {
+      property: "og:url",
+      content: "https://v-lock.be",
+    },
+    {
+      property: "og:type",
+      content: "website",
+    },
+    // Twitter
+    {
+      property: "twitter:card",
+      content: "summary_large_image",
+    },
+    {
+      property: "twitter:title",
+      content: "Parkings à vélo sécurisés en Wallonie | v-lock",
+    },
+    {
+      property: "twitter:description",
+      content: "v-lock est une application qui vous permet de trouver des parkings à vélo sécurisés en Wallonie.",
+    },
+    {
+      property: "twitter:image",
+      content: "https://v-lock.be/assets/logo/logo-vlock.png",
+    },
+    {
+      property: "twitter:url",
+      content: "https://v-lock.be",
+    },
+    {
+      property: "twitter:card",
+      content: "summary_large_image",
+    },
+    {
+      property: "twitter:creator",
+      content: "@vlock",
+    },
+    {
+      property: "twitter:site",
+      content: "@vlock",
     },
   ],
 };
