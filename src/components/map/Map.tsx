@@ -4,22 +4,34 @@ import {
     useVisibleTask$,
     useStore,
     useSignal,
+    
     type NoSerialize
 } from "@builder.io/qwik";
 
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
-interface IMapProps {
-    gpsCoordinates: {
-        x: number;
-        y: number;
-    }
+interface IMapCoordinates {
+    lat: number;
+    long: number;
 
 }
 
-export default component$<IMapProps>((props) => {
-    const { gpsCoordinates } = props;
+export default component$(() => {
+
+    const defaultCoordinates:IMapCoordinates = {
+        lat: 50.64250,
+        long: 5.58570,
+    }
+
+    const gpsCoordinates = useStore<{
+        lat: number | null,
+        long: number | null,
+    }>({
+        lat: null,
+        long: null,
+    });
+
 
     const mapRef = useSignal<HTMLElement>();
     const mapStore = useStore<{
@@ -28,19 +40,30 @@ export default component$<IMapProps>((props) => {
         mapInstance: undefined
     })
 
-    useVisibleTask$(() => {
-
-        navigator.geolocation.getCurrentPosition((position) => {
-        gpsCoordinates.x = position.coords.latitude;
-        gpsCoordinates.y = position.coords.longitude;
-        })   
-
+    useVisibleTask$(({track}) => {
         const map = L.map('map')
-            .setView([gpsCoordinates.x, gpsCoordinates.y], 13);
+            .setView([defaultCoordinates.lat, defaultCoordinates.long], 13);
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        }).addTo(map);
+            attribution: '© OpenStreetMap contributors',
+            minZoom: 8,
+            maxZoom: 20,
 
-        L.marker([gpsCoordinates.x, gpsCoordinates.y]).addTo(map);
+        }).addTo(map);
+        
+
+        track(() => gpsCoordinates);
+
+        try {
+            navigator.geolocation.getCurrentPosition((position) => {
+                gpsCoordinates.lat = position.coords.latitude;
+                gpsCoordinates.long = position.coords.longitude;
+                map.setView([gpsCoordinates.lat!, gpsCoordinates.long!], 17);
+                L.marker([gpsCoordinates.lat!, gpsCoordinates.long!]).addTo(map).bindPopup('Hey, je m\'appelle Paul').openPopup();
+                
+            })
+        } catch (error) {
+            console.log(error);
+        }
 
         mapStore.mapInstance = noSerialize(map);
        // mapStore.mapInstance = noSerialize(newMap);
@@ -48,24 +71,9 @@ export default component$<IMapProps>((props) => {
 
     return(
         <>
-        <div id="map" ref={mapRef} style="height:calc(100vh - 76px); overflow:hidden">
+        <div id="map" ref={mapRef} style={{height: "calc(100vh - 100px)", overflow: "hidden"}}>
            
         </div>
         </>
         );
 });
-
-
-/*export default component$<IMapProps>((props) => {
-    const { gpsCoordinates } = props;
-    return(
-        <><iframe 
-            width="100%" 
-            height="100%" 
-            src={`https://www.openstreetmap.org/export/embed.html?bbox=${gpsCoordinates.y + 0.00787}%2C${gpsCoordinates.x - 0.00424}%2C${gpsCoordinates.y - 0.00787}%2C${gpsCoordinates.x + 0.00424}&amp;layer=mapnik`} 
-            style="min-height:calc(100vh - 76px);"
-        >
-        </iframe>
-        </>
-    );
-});*/

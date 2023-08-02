@@ -43,7 +43,7 @@ export default component$(() => {
         <>
             <section>
                 
-            {(coordinatesLoaded.value) && <Map gpsCoordinates={{x: gpsCoordinates.x ?? 50.64250, y: gpsCoordinates.y ?? 5.58570}} />}
+                <Map />
             </section>
         </>
     )
