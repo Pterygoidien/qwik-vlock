@@ -35,14 +35,14 @@ export default component$(() => {
   
   useVisibleTask$(({track})=>{
     track(themeStore);
-    const body = document.querySelector('body');
+    const body = document.querySelector('html');
     if(body)
     {
       if(themeStore.value){
-      body.classList.add('dark:bg-slate-900');
+      body.classList.add('dark');
     }
     else{
-      body.classList.remove('dark:bg-slate-900');
+      body.classList.remove('dark');
     }}
 
   });
