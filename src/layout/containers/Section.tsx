@@ -8,7 +8,7 @@ interface SectionProps {
 export default component$<SectionProps>((props) => {
     return(
         <section class={`${props.class}`}>
-            <div class={`${(props.container !== false) && "container"} py-4`}>
+            <div class={`${(props.container !== false) && "container"} py-12`}>
                 <Slot />
             </div>
         </section>

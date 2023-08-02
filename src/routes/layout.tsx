@@ -42,6 +42,7 @@ export default component$(() => {
     track(()=>{
       if(themeStore.manualToggle) {
         localStorage.setItem('theme', themeStore.theme); 
+        document.documentElement.setAttribute('data-theme', themeStore.theme);
         const html = document.querySelector('html');
         if(html) html.className = themeStore.theme;
       }
@@ -54,48 +55,6 @@ export default component$(() => {
     
 
   });
-
-  //const themeStore = useSignal<boolean>(false);
-  /*useContextProvider(ThemeContextSignal, themeStore);
-  
-  useVisibleTask$(({track})=>{
-    track(()=> {
-      if(('theme' in localStorage) && themeStore.value !== (localStorage.theme === 'dark')){
-        localStorage.setItem('theme', themeStore.value ? 'dark' : 'light');
-      }
-
-    });
-    try {
-      const html = document.querySelector('html');
-      if(localStorage.theme) {
-        themeStore.value = localStorage.theme === 'dark';
-      }
-      else if(!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        themeStore.value = true;
-        localStorage.setItem('theme', 'dark');
-      }
-      else {
-        themeStore.value = false;
-      }
-
-      
-      if(html)
-      {
-        if(themeStore.value){
-        html.classList.add('dark');
-      }
-      else{
-        html.classList.remove('dark');
-      }}
-
-
-    } catch (error) {
-      console.log(error);
-    }
-    
-
-  });*/
-  
 
 
   return (

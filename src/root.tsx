@@ -29,12 +29,13 @@ export default component$(() => {
           let html = document.querySelector('html');
           if(localStorage.theme=='dark' ||  (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             html.classList.add('dark');
+            document.documentElement.setAttribute('data-theme', 'dark');
           }
         `} />
 
         <ServiceWorkerRegister />
       </head>
-      <body lang="fr" class="dark:bg-sky-700 dark:text-white">
+      <body lang="fr" class="dark:bg-slate-900 dark:text-white">
         <RouterOutlet />
       </body>
     </QwikCityProvider>

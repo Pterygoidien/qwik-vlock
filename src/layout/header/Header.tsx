@@ -1,16 +1,16 @@
-import { component$, useStylesScoped$, useContext } from "@builder.io/qwik";
-import { ThemeContext  } from "~/store/themeContext/themeContext";
+import { component$, useStylesScoped$ } from "@builder.io/qwik";
 import { Image } from "@unpic/qwik";
 
 import styles from "./Header.module.css?inline";
+import { Link } from "@builder.io/qwik-city";
+import ThemeToggle from "~/components/interactives/themeToggle";
 
 export default component$(() => {
     useStylesScoped$(styles);
     
-    const themeCtx = useContext(ThemeContext);
 
     return (
-        <header class="flex dark:bg-slate-900">
+        <header class="flex">
         <div class="container flex items-center justify-between mx-auto py-4 rounded-b-lg bg-white dark:bg-slate-900">
             <Image 
                 src="/assets/logo/logo-vlock.png"
@@ -18,28 +18,25 @@ export default component$(() => {
                 width="100"
                 height="100" 
             />
-            <nav class="flex-grow ">
+            <nav class="flex-grow uppercase font-bold ">
                 <ul class="flex gap-3 items-center mx-auto items-center justify-center self-center">
-                    <li><a href="/">Accueil</a></li>
-                    <li><a href="#">Abonnements</a></li>
-                    <li><a href="/parkings/" class="bg-sky-500 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded dark:bg-sky-200 dark:text-black">Carte des parkings</a></li>
-                    <li><a href="#">A propos</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><Link href="/">Accueil</Link></li>
+                    <li><Link href="#">Abonnements</Link></li>
+                    <li><Link href="/parkings/" class="bg-sky-500 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded dark:bg-sky-200 dark:text-black">Carte des parkings</Link></li>
+                    <li><Link href="#">A propos</Link></li>
+                    <li><Link href="#">Contact</Link></li>
                    </ul>
             </nav> 
             <div id="toggleSection">
                 <ul class="flex items-center gap-3">
                     <li>
-                    <svg aria-hidden="true" height="24" viewBox="0 0 24 24" width="24" class="sun-and-moon" q:key="nb_0"><mask id="moon-mask" class="moon"><rect fill="white" height="100%" width="100%" x="0" y="0"></rect><circle cx="24" cy="10" fill="black" r="6"></circle></mask><circle cx="12" cy="12" fill="currentColor" mask="url(#moon-mask)" r="6" class="sun"></circle><g stroke="currentColor" class="sun-beams"><line x1="12" x2="12" y1="1" y2="3"></line><line x1="12" x2="12" y1="21" y2="23"></line><line x1="4.22" x2="5.64" y1="4.22" y2="5.64"></line><line x1="18.36" x2="19.78" y1="18.36" y2="19.78"></line><line x1="1" x2="3" y1="12" y2="12"></line><line x1="21" x2="23" y1="12" y2="12"></line><line x1="4.22" x2="5.64" y1="19.78" y2="18.36"></line><line x1="18.36" x2="19.78" y1="5.64" y2="4.22"></line></g></svg>              
+                        <ThemeToggle />             
                     </li>
                     <li>
 
                         <button class="bg-sky-500 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded" 
-                        onClick$={() => {
-                            themeCtx.theme = (themeCtx.theme === 'light') ? 'dark' : 'light';
-                            themeCtx.manualToggle = true;
-                        }}>
-                            {themeCtx.theme == 'light' ? "Mode sombre":"Mode clair" }
+                        >
+                           S'enregistrer
                         </button>
                         
                     </li>
