@@ -4,14 +4,13 @@ import {
     useVisibleTask$,
     useStore,
     useSignal,
-    
     type NoSerialize
 } from "@builder.io/qwik";
 
 import * as L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import { MarkerClusterGroup } from 'leaflet.markercluster';
-import 'leaflet.markercluster/dist/MarkerCluster.Default.css';
+import  {MarkerClusterGroup }  from 'leaflet.markercluster';
+import './clusters.css';
 import parkingLocations from './parking-locations.json';
 
 interface IMapCoordinates {
@@ -27,9 +26,13 @@ interface IParking {
     coordinates: IMapCoordinates;
     city?: string;
     area?: string;
+    available:number,
+    capacity:number,
 }
 
 export default component$(() => {
+
+
     const defaultCoordinates:IMapCoordinates = {
         lat: 50.64250,
         long: 5.58570,
@@ -109,7 +112,25 @@ export default component$(() => {
             popupAnchor: [-2, -40],
         });
 
-        const parkingCluster = new MarkerClusterGroup({});
+        const parkingCluster = new MarkerClusterGroup({
+            iconCreateFunction: function(cluster:any) {
+                const childCount = cluster.getChildCount();
+                let c = ' mclusters-';
+                if (childCount < 10) {
+                    c += 'small';
+                } else if (childCount < 100) {
+                    c += 'medium';
+                } else {
+                    c += 'large';
+                }
+                return new L.DivIcon({
+                    html: '<div><span>' + childCount + '</span></div>',
+                    className: 'mclusters' + c,
+                    iconSize: new L.Point(40, 40)
+                });
+            }
+            
+        });
 
         try {
             parkingStore.forEach((parking:IParking) => {
@@ -132,7 +153,7 @@ export default component$(() => {
 
     return(
         <>
-        <div id="map" ref={mapRef} style={{height: "calc(100vh - 100px)", overflow: "hidden"}}>
+        <div id="map" ref={mapRef} style={{height: "calc(100vh - 100px)", maxHeight:"calc(100vh - 100px)", overflow: "hidden"}}>
            
         </div>
         </>
