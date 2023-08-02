@@ -1,11 +1,11 @@
-import { component$, Slot,useContextProvider,useSignal,useStyles$, useVisibleTask$} from "@builder.io/qwik";
+import { component$, Slot,useContextProvider, useStore, useStyles$, useVisibleTask$} from "@builder.io/qwik";
 import { routeLoader$ } from "@builder.io/qwik-city";
 import type { RequestHandler } from "@builder.io/qwik-city";
 
 import Header from "~/layout/header/Header";
 import Footer from "~/layout/footer/Footer";
 
-import { ThemeContext } from "~/store/themeContext/themeContext";
+import { type IThemeContext, ThemeContext} from "~/store/themeContext/themeContext";
 
 import styles from "./styles.css?inline";
 
@@ -30,22 +30,76 @@ export const useServerTimeLoader = routeLoader$(() => {
 export default component$(() => {
 
   useStyles$(styles);
-  const themeStore = useSignal<boolean>(false);
+
+  const themeStore = useStore<IThemeContext>({
+    theme:'light',
+    manualToggle: false,
+  })
+
   useContextProvider(ThemeContext, themeStore);
-  
+
   useVisibleTask$(({track})=>{
-    track(themeStore);
-    const body = document.querySelector('html');
-    if(body)
-    {
-      if(themeStore.value){
-      body.classList.add('dark');
-    }
-    else{
-      body.classList.remove('dark');
-    }}
+
+    track(()=> {
+      const html = document.querySelector('html');
+      if(html) html.className = themeStore.theme;
+    });
+    if(themeStore.manualToggle) {
+      localStorage.setItem('theme', themeStore.theme);
+    } else {
+      if(('theme' in localStorage) && themeStore.theme !== localStorage.theme){
+        themeStore.theme = localStorage.theme;
+      }
+      else if(!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        themeStore.theme = 'dark';
+        localStorage.setItem('theme', 'dark');
+      }
+    }    
 
   });
+
+  //const themeStore = useSignal<boolean>(false);
+  /*useContextProvider(ThemeContextSignal, themeStore);
+  
+  useVisibleTask$(({track})=>{
+    track(()=> {
+      if(('theme' in localStorage) && themeStore.value !== (localStorage.theme === 'dark')){
+        localStorage.setItem('theme', themeStore.value ? 'dark' : 'light');
+      }
+
+    });
+    try {
+      const html = document.querySelector('html');
+      if(localStorage.theme) {
+        themeStore.value = localStorage.theme === 'dark';
+      }
+      else if(!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        themeStore.value = true;
+        localStorage.setItem('theme', 'dark');
+      }
+      else {
+        themeStore.value = false;
+      }
+
+      
+      if(html)
+      {
+        if(themeStore.value){
+        html.classList.add('dark');
+      }
+      else{
+        html.classList.remove('dark');
+      }}
+
+
+    } catch (error) {
+      console.log(error);
+    }
+    
+
+  });*/
+  
+
 
   return (
     <>

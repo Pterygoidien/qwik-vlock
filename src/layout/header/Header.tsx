@@ -1,5 +1,5 @@
 import { component$, useStylesScoped$, useContext } from "@builder.io/qwik";
-import { ThemeContext } from "~/store/themeContext/themeContext";
+import { ThemeContext  } from "~/store/themeContext/themeContext";
 import { Image } from "@unpic/qwik";
 
 import styles from "./Header.module.css?inline";
@@ -11,7 +11,7 @@ export default component$(() => {
 
     return (
         <header class="flex dark:bg-slate-900">
-        <div class="container flex items-center justify-between mx-auto py-4 rounded-b-lg bg-white dark:bg-slate-900 dark:text-white">
+        <div class="container flex items-center justify-between mx-auto py-4 rounded-b-lg bg-white dark:bg-slate-900">
             <Image 
                 src="/assets/logo/logo-vlock.png"
                 alt="logo"
@@ -26,7 +26,7 @@ export default component$(() => {
                     <li><a href="#">A propos</a></li>
                     <li><a href="#">Contact</a></li>
                    </ul>
-            </nav>
+            </nav> 
             <div id="toggleSection">
                 <ul class="flex items-center gap-3">
                     <li>
@@ -35,8 +35,11 @@ export default component$(() => {
                     <li>
 
                         <button class="bg-sky-500 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded" 
-                        onClick$={() => themeCtx.value = !themeCtx.value}>
-                            {themeCtx.value ? "Mode sombre":"Mode clair" }
+                        onClick$={() => {
+                            themeCtx.theme = (themeCtx.theme === 'light') ? 'dark' : 'light';
+                            themeCtx.manualToggle = true;
+                        }}>
+                            {themeCtx.theme == 'light' ? "Mode sombre":"Mode clair" }
                         </button>
                         
                     </li>

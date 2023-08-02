@@ -25,9 +25,14 @@ export default component$(() => {
         <meta charSet="utf-8" />
         <link rel="manifest" href="/manifest.json" />
         <RouterHead />
+        <script dangerouslySetInnerHTML={`
+          var html = document.querySelector('html');
+          html.className = localStorage.getItem('theme') || window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        `} />
+
         <ServiceWorkerRegister />
       </head>
-      <body lang="fr">
+      <body lang="fr" class="dark:bg-sky-700 dark:text-white">
         <RouterOutlet />
       </body>
     </QwikCityProvider>
