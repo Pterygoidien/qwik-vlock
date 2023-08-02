@@ -126,7 +126,7 @@ export default component$(() => {
                 return new L.DivIcon({
                     html: '<div><span>' + childCount + '</span></div>',
                     className: 'mclusters' + c,
-                    iconSize: new L.Point(40, 40)
+                    iconSize: new L.Point(70, 70)
                 });
             }
             
