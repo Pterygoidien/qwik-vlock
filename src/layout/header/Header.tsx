@@ -10,8 +10,8 @@ export default component$(() => {
     const themeCtx = useContext(ThemeContext);
 
     return (
-        <header class="flex ">
-        <div class="container flex items-center justify-between mx-auto py-4 bg-white rounded-b-lg">
+        <header class="flex dark:bg-slate-900">
+        <div class="container flex items-center justify-between mx-auto py-4 rounded-b-lg bg-white dark:bg-slate-900 dark:text-white">
             <Image 
                 src="/assets/logo/logo-vlock.png"
                 alt="logo"
@@ -22,7 +22,7 @@ export default component$(() => {
                 <ul class="flex gap-3 items-center mx-auto items-center justify-center self-center">
                     <li><a href="/">Accueil</a></li>
                     <li><a href="#">Abonnements</a></li>
-                    <li><a href="/parkings/" class="bg-sky-500 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded">Carte des parkings</a></li>
+                    <li><a href="/parkings/" class="bg-sky-500 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded dark:bg-sky-200 dark:text-black">Carte des parkings</a></li>
                     <li><a href="#">A propos</a></li>
                     <li><a href="#">Contact</a></li>
                    </ul>
@@ -35,8 +35,8 @@ export default component$(() => {
                     <li>
 
                         <button class="bg-sky-500 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded" 
-                        onClick$={() => themeCtx.isDarkMode = !themeCtx.isDarkMode}>
-                            {themeCtx.isDarkMode ? "Mode sombre":"Mode clair" }
+                        onClick$={() => themeCtx.value = !themeCtx.value}>
+                            {themeCtx.value ? "Mode sombre":"Mode clair" }
                         </button>
                         
                     </li>

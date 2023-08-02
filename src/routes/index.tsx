@@ -8,7 +8,7 @@ export default component$(() => {
     <>
       
       <Section
-        bgColor="bg-sky-200"
+        class="bg-sky-200 dark:bg-sky-900 dark:text-white"
         container={true}
       >
        <h1 class="text-center mb-10">Bienvenue sur v-lock !</h1>
@@ -23,9 +23,11 @@ export default component$(() => {
 
        </p>
       </Section>
-      <Section>
+      <Section
+        class="dark:bg-slate-800 dark:text-white"
+      >
         <h2>Nos services</h2>
-        <div class="flex">
+        <div class="flex gap-8">
         <article>
           <h3>Service 1</h3>
           <p>

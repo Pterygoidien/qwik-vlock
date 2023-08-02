@@ -1,4 +1,4 @@
-import { component$, Slot,useContextProvider,useStore,useStyles$,  } from "@builder.io/qwik";
+import { component$, Slot,useContextProvider,useSignal,useStyles$, useVisibleTask$} from "@builder.io/qwik";
 import { routeLoader$ } from "@builder.io/qwik-city";
 import type { RequestHandler } from "@builder.io/qwik-city";
 
@@ -29,10 +29,24 @@ export const useServerTimeLoader = routeLoader$(() => {
 
 export default component$(() => {
 
-  const themeStore = useStore({isDarkMode: false});
-  useContextProvider(ThemeContext, themeStore);
-
   useStyles$(styles);
+  const themeStore = useSignal<boolean>(false);
+  useContextProvider(ThemeContext, themeStore);
+  
+  useVisibleTask$(({track})=>{
+    track(themeStore);
+    const body = document.querySelector('body');
+    if(body)
+    {
+      if(themeStore.value){
+      body.classList.add('dark:bg-slate-900');
+    }
+    else{
+      body.classList.remove('dark:bg-slate-900');
+    }}
+
+  });
+
   return (
     <>
      <Header />
