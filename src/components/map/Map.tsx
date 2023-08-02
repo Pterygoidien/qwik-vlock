@@ -69,10 +69,11 @@ export default component$(() => {
     useVisibleTask$(({track}) => {
         const map = L.map('map')
             .setView([defaultCoordinates.lat, defaultCoordinates.long], 13);
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: 'v-lock uses OpenStreetMap with <3 ',
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {    
+            attribution:'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
             minZoom: 8,
             maxZoom: 20,
+            overflow: false,
 
         }).addTo(map);
         
@@ -115,7 +116,7 @@ export default component$(() => {
                     icon: L.icon({
                         iconUrl: 'http://localhost:5173/assets/map/marker-blue.e938bc99.svg',
                         iconSize: [80, 80],
-                        iconAnchor: [80, 80],
+                        iconAnchor: [40, 65],
                         popupAnchor: [-2, -40],
                     }),
 
