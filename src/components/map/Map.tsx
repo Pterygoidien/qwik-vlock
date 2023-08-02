@@ -12,6 +12,7 @@ import * as L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { MarkerClusterGroup } from 'leaflet.markercluster';
 import 'leaflet.markercluster/dist/MarkerCluster.Default.css';
+import parkingLocations from './parking-locations.json';
 
 interface IMapCoordinates {
     lat: number;
@@ -41,61 +42,7 @@ export default component$(() => {
         long: null,
     });
 
-    const parkingStore = useStore<IParking[]>([{
-        id: 1,
-        name: 'Parking 1',
-        address: 'prout',
-        coordinates: {
-            lat: 50.64250,
-            long: 5.58570,
-        },
-        city: 'Liège',
-        area:'Centre'
-
-    },
-    {
-        id: 2,
-        name: 'Parking 2',
-        address: 'prout',
-        coordinates: {
-            lat:50.63569237663317, 
-            long:5.571662394235067
-        },
-        city: 'Liège',
-        area:'Centre'
-    },
-    {
-        id: 3,
-        name: 'Parking 3',
-        address: 'prout',
-        coordinates: {
-            lat:50.627612857402276, 
-            long:5.629570566322512
-        },
-        city: 'Liège',
-        area:'Centre'
-    },
-    {
-        id: 4,
-        name: 'Parking 3',
-        address: 'prout',
-        coordinates: {
-            lat:50.64249679438073, 
-            long:5.593473521364354
-        },
-        city: 'Liège',
-        area:'Centre'
-    },{
-        id: 5,
-        name: 'Parking 3',
-        address: 'prout',
-        coordinates: {
-            lat:50.6649611586614, 
-            long:5.646497546068061
-        }
-    }
-
-]);
+    const parkingStore = useStore<IParking[]>(parkingLocations);
 
     const mapRef = useSignal<HTMLElement>();
     const mapStore = useStore<{
