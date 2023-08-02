@@ -17,3 +17,11 @@ This project implements two things that can be reused :
 ## To-do
 
 1.  coalesce objects nearby when unzooming
+
+## Google Cloud Run Server
+
+This app has a minimal [Cloud Run server](https://cloud.google.com/run) implementation. After running a full build, deploy your app with:
+
+```
+npm run deploy
+```
