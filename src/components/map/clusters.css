@@ -1,0 +1,65 @@
+.mclusters-small {
+	background-color: rgba(89, 95, 220, 0.5);
+	}
+.mclusters-small div {
+	background-color: rgba(45, 65, 163, 0.6);
+	}
+
+.mclusters-medium {
+    background-color: rgba(16, 32, 115, 0.6);
+	}
+.mclusters-medium div {
+    background-color: rgba(25, 45, 147, 0.6);
+	}
+
+.mclusters-large {
+	background-color: rgba(25, 45, 147, 0.6);
+	}
+.mclusters-large div {
+	background-color: rgba(25, 45, 147, 0.6);
+	}
+
+	/* IE 6-8 fallback colors */
+.leaflet-oldie .mclusters-small {
+	background-color: rgba(25, 45, 147, 0.6);
+	}
+.leaflet-oldie .mclusters-small div {
+	background-color: rgba(25, 45, 147, 0.6);
+	}
+
+.leaflet-oldie .mclusters-medium {
+	background-color: rgba(25, 45, 147, 0.6);
+	}
+.leaflet-oldie .mclusters-medium div {
+	background-color: rgba(25, 45, 147, 0.6);
+	}
+
+.leaflet-oldie .mclusters-large {
+	background-color: rgba(25, 45, 147, 0.6);
+	}
+.leaflet-oldie .mclusters-large div {
+	background-color: rgba(25, 45, 147, 0.6);
+}
+
+.mclusters {
+	background-clip: padding-box;
+	border-radius: 20px;
+	width:40px;
+	height:40px;
+	background-color:rgba(25, 45, 147, 1);
+	text-align: center;
+	font-size:22px;
+	}
+.mclusters div {
+	width: 30px;
+	height: 30px;
+	margin-left: 5px;
+	margin-top: 5px;
+
+	text-align: center;
+	border-radius: 15px;
+	font: 18px "Helvetica Neue", Arial, Helvetica, sans-serif;
+	}
+.mclusters span {
+	line-height: 30px;
+	}
