@@ -35,9 +35,12 @@ export default component$<IMapProps>((props) => {
         gpsCoordinates.y = position.coords.longitude;
         })   
 
-        const map = L.map('map').setView([gpsCoordinates.x, gpsCoordinates.y], 13);
+        const map = L.map('map')
+            .setView([gpsCoordinates.x, gpsCoordinates.y], 13);
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         }).addTo(map);
+
+        L.marker([gpsCoordinates.x, gpsCoordinates.y]).addTo(map);
 
         mapStore.mapInstance = noSerialize(map);
        // mapStore.mapInstance = noSerialize(newMap);
