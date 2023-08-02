@@ -48,9 +48,9 @@ export default component$<IMapProps>((props) => {
 
     return(
         <>
-            <div id="map" ref={mapRef} style="height:calc(100vh - 76px); overflow:hidden">
-            
-            </div>
+        <div id="map" ref={mapRef} style="height:calc(100vh - 76px); overflow:hidden">
+           
+        </div>
         </>
         );
 });
