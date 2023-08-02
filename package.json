@@ -41,6 +41,7 @@
   },
   "dependencies": {
     "@unpic/qwik": "^0.0.24",
-    "leaflet": "^1.9.4"
+    "leaflet": "^1.9.4",
+    "leaflet.markercluster": "^1.5.3"
   }
 }

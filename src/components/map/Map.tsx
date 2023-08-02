@@ -8,8 +8,10 @@ import {
     type NoSerialize
 } from "@builder.io/qwik";
 
-import L from 'leaflet';
+import * as L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
+import { MarkerClusterGroup } from 'leaflet.markercluster';
+import 'leaflet.markercluster/dist/MarkerCluster.Default.css';
 
 interface IMapCoordinates {
     lat: number;
@@ -22,6 +24,8 @@ interface IParking {
     name: string;
     address: string;
     coordinates: IMapCoordinates;
+    city?: string;
+    area?: string;
 }
 
 export default component$(() => {
@@ -44,7 +48,10 @@ export default component$(() => {
         coordinates: {
             lat: 50.64250,
             long: 5.58570,
-        }
+        },
+        city: 'Liège',
+        area:'Centre'
+
     },
     {
         id: 2,
@@ -53,8 +60,40 @@ export default component$(() => {
         coordinates: {
             lat:50.63569237663317, 
             long:5.571662394235067
-        }
+        },
+        city: 'Liège',
+        area:'Centre'
     },
+    {
+        id: 3,
+        name: 'Parking 3',
+        address: 'prout',
+        coordinates: {
+            lat:50.627612857402276, 
+            long:5.629570566322512
+        },
+        city: 'Liège',
+        area:'Centre'
+    },
+    {
+        id: 4,
+        name: 'Parking 3',
+        address: 'prout',
+        coordinates: {
+            lat:50.64249679438073, 
+            long:5.593473521364354
+        },
+        city: 'Liège',
+        area:'Centre'
+    },{
+        id: 5,
+        name: 'Parking 3',
+        address: 'prout',
+        coordinates: {
+            lat:50.6649611586614, 
+            long:5.646497546068061
+        }
+    }
 
 ]);
 
@@ -67,25 +106,25 @@ export default component$(() => {
 
 
     useVisibleTask$(({track}) => {
+        track(() => gpsCoordinates);
+        track(() => parkingStore);
+
         const map = L.map('map')
             .setView([defaultCoordinates.lat, defaultCoordinates.long], 13);
+        
+        
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {    
             attribution:'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
             minZoom: 8,
             maxZoom: 20,
-            overflow: false,
-
         }).addTo(map);
         
-
-        track(() => gpsCoordinates);
-        track(() => parkingStore);
 
         try {
             navigator.geolocation.getCurrentPosition((position) => {
                 gpsCoordinates.lat = position.coords.latitude;
                 gpsCoordinates.long = position.coords.longitude;
-                map.setView([gpsCoordinates.lat!, gpsCoordinates.long!], 17);
+                map.setView([gpsCoordinates.lat!, gpsCoordinates.long!], 18);
                 L.marker([gpsCoordinates.lat!, gpsCoordinates.long!], {
                     icon: L.icon({
                         iconUrl: 'https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678111-map-marker-512.png',
@@ -93,35 +132,48 @@ export default component$(() => {
                         iconAnchor: [22, 38],
                         popupAnchor: [-2, -40],
                     }),
+                    title: 'Votre emplacement',
+                    zIndexOffset: 1000,
+                }).addTo(map).bindPopup('Vous êtes ici').openPopup();
 
-                })
-                .addTo(map)
-                .bindPopup('Vous êtes ici').openPopup();
+                L.circle([gpsCoordinates.lat!, gpsCoordinates.long!], {
+                    color: 'red',
+                    fillColor: '#f03',
+                    fillOpacity: 0.2,
+                    radius: 400,
+                }).addTo(map);
+                
+                
             setTimeout(() => {
-                    map.setView([gpsCoordinates.lat!, gpsCoordinates.long!], 13);
-                }, 2000);
-
-
-                
-                
+                    map.setView([gpsCoordinates.lat!, gpsCoordinates.long!], 16);
+                }, 1700);
             })
         } catch (error) {
             console.log(error);
         }
 
+        const parkingIcon = L.icon({
+            iconUrl: 'http://localhost:5173/assets/map/marker-blue.e938bc99.svg',
+            shadowUrl:'https://unpkg.com/leaflet@1.4.0/dist/images/marker-shadow.png',
+            shadowSize: [68, 95],
+            shadowAnchor: [18, 80],
+            iconSize: [80, 80],
+            iconAnchor: [40, 65],
+            popupAnchor: [-2, -40],
+        });
+
+        const parkingCluster = new MarkerClusterGroup({});
+
         try {
             parkingStore.forEach((parking:IParking) => {
-                L.marker([parking.coordinates.lat, parking.coordinates.long], {
+                L.marker(new L.LatLng(parking.coordinates.lat, parking.coordinates.long), {
 
-                    icon: L.icon({
-                        iconUrl: 'http://localhost:5173/assets/map/marker-blue.e938bc99.svg',
-                        iconSize: [80, 80],
-                        iconAnchor: [40, 65],
-                        popupAnchor: [-2, -40],
-                    }),
+                    icon: parkingIcon,
+                    title: parking.name,
+                }).bindPopup(parking.name).addTo(parkingCluster);
 
-                }).addTo(map);
             })
+            parkingCluster.addTo(map);
         } catch(err) {
             console.log(err);
 
