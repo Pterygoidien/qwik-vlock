@@ -96,6 +96,12 @@ export default component$(() => {
                 })
                 .addTo(map)
                 .bindPopup('Vous êtes ici').openPopup();
+
+                setTimeout(() => {
+                    map.setView([gpsCoordinates.lat!, gpsCoordinates.long!], 14);
+                }, 1500);
+
+                
                 
             })
         } catch (error) {
