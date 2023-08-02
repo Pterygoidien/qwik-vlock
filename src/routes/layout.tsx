@@ -34,27 +34,24 @@ export default component$(() => {
   const themeStore = useStore<IThemeContext>({
     theme:'light',
     manualToggle: false,
-  })
+  }, {deep:false})
 
   useContextProvider(ThemeContext, themeStore);
 
-  useVisibleTask$(({track})=>{
+  useVisibleTask$(({track})=>{ 
+    track(()=>{
+      if(themeStore.manualToggle) {
+        localStorage.setItem('theme', themeStore.theme); 
+        const html = document.querySelector('html');
+        if(html) html.className = themeStore.theme;
+      }
+    })
 
-    track(()=> {
-      const html = document.querySelector('html');
-      if(html) html.className = themeStore.theme;
-    });
-    if(themeStore.manualToggle) {
-      localStorage.setItem('theme', themeStore.theme);
-    } else {
-      if(('theme' in localStorage) && themeStore.theme !== localStorage.theme){
-        themeStore.theme = localStorage.theme;
-      }
-      else if(!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        themeStore.theme = 'dark';
-        localStorage.setItem('theme', 'dark');
-      }
-    }    
+    if(!themeStore.manualToggle)
+    {
+      themeStore.theme = localStorage.theme || 'light';
+    }
+    
 
   });
 

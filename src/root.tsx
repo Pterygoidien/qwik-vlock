@@ -26,8 +26,10 @@ export default component$(() => {
         <link rel="manifest" href="/manifest.json" />
         <RouterHead />
         <script dangerouslySetInnerHTML={`
-          var html = document.querySelector('html');
-          html.className = localStorage.getItem('theme') || window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+          let html = document.querySelector('html');
+          if(localStorage.theme=='dark' ||  (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            html.classList.add('dark');
+          }
         `} />
 
         <ServiceWorkerRegister />
