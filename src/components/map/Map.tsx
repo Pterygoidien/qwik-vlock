@@ -7,9 +7,9 @@ import {
     type NoSerialize
 } from "@builder.io/qwik";
 
-import * as L from 'leaflet';
+import  L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import  {MarkerClusterGroup }  from 'leaflet.markercluster';
+import  {MarkerClusterGroup }  from 'leaflet.markercluster/dist/leaflet.markercluster.js';
 import './clusters.css';
 import parkingLocations from './parking-locations.json';
 
