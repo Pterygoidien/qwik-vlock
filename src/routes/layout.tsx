@@ -48,17 +48,11 @@ export default component$(() => {
   }));
 
   useVisibleTask$(({track})=>{ 
-    track(()=>{
-      if(themeStore.manualToggle) {
-        localStorage.setItem('theme', themeStore.theme); 
-        document.documentElement.setAttribute('data-theme', themeStore.theme);
-        const html = document.querySelector('html');
-        if(html) html.className = themeStore.theme;
-      }
-    })
-
-    
-    
+    track(themeStore);
+    localStorage.setItem('theme', themeStore.theme); 
+    document.documentElement.setAttribute('data-theme', themeStore.theme);
+    const html = document.querySelector('html'); //to-do : remove this, and only use [data-theme] attribute for styling
+    if(html) html.className = themeStore.theme;
 
   });
 
