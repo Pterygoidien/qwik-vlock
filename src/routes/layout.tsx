@@ -39,10 +39,7 @@ export default component$(() => {
   useContextProvider(ThemeContext, themeStore);
 
   useOnDocument('DOMContentLoaded', $(()=>{
-    const html = document.querySelector('html');
-    if(!themeStore.manualToggle && ('theme' in localStorage))
-      themeStore.theme = localStorage.theme ;
-    if(html) html.className = themeStore.theme;
+    themeStore.theme = localStorage.theme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') ;
     document.documentElement.setAttribute('data-theme', themeStore.theme);
     
   }));
@@ -51,9 +48,6 @@ export default component$(() => {
     track(themeStore);
     localStorage.setItem('theme', themeStore.theme); 
     document.documentElement.setAttribute('data-theme', themeStore.theme);
-    const html = document.querySelector('html'); //to-do : remove this, and only use [data-theme] attribute for styling
-    if(html) html.className = themeStore.theme;
-
   });
 
 

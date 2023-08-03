@@ -26,9 +26,7 @@ export default component$(() => {
         <link rel="manifest" href="/manifest.json" />
         <RouterHead />
         <script dangerouslySetInnerHTML={`
-          let html = document.querySelector('html');
           if(localStorage.theme=='dark' ||  (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            html.classList.add('dark');
             document.documentElement.setAttribute('data-theme', 'dark');
           }
         `} />

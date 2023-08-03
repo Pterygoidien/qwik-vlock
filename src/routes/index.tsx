@@ -20,7 +20,7 @@ export default component$(() => {
           width={300}
           height={300}
         />
-        <div class="container-sm pt-12">
+        <div class="container pt-12">
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus doloremque, quas similique officiis adipisci recusandae veritatis dignissimos quibusdam iste asperiores quo consequuntur officia consectetur hic cumque maxime autem vitae! Aperiam.
           Sed ipsam aut excepturi distinctio, voluptas totam sapiente laborum laudantium! Iusto fugiat voluptates numquam, ab accusamus illo consectetur officiis similique consequuntur facere sed quis quasi minima, suscipit sint quos. Maiores.
@@ -74,6 +74,19 @@ export default component$(() => {
         </article>
         </div>
        
+        </Section>
+        <Section>
+          <h2>Notre équipe</h2>
+          <div class="flex gap-8">
+            <article>
+              <h3>Personne 1</h3>
+
+            </article>
+            <article>
+              <h3>Personne 2</h3>
+
+            </article>
+          </div>
         </Section>
    
 
