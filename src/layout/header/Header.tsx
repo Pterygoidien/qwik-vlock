@@ -3,7 +3,7 @@ import { Image } from "@unpic/qwik";
 
 import styles from "./Header.module.css?inline";
 import { Link } from "@builder.io/qwik-city";
-import ThemeToggle from "~/components/interactives/themeToggle";
+import ThemeToggle from "~/components/interactives/ThemeToggle";
 
 export default component$(() => {
     useStylesScoped$(styles);
