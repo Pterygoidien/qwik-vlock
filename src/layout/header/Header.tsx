@@ -3,7 +3,7 @@ import { Image } from "@unpic/qwik";
 
 import styles from "./Header.module.css?inline";
 import { Link } from "@builder.io/qwik-city";
-import ThemeToggle from "~/components/interactives/themeToggle";
+import ThemeToggle from "~/components/interactives/ThemeToggle";
 
 export default component$(() => {
     useStylesScoped$(styles);
@@ -24,7 +24,7 @@ export default component$(() => {
                     <li><Link href="#">Abonnements</Link></li>
                     <li><Link href="/parkings/" class="bg-sky-500 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded dark:bg-sky-200 dark:text-black">Carte des parkings</Link></li>
                     <li><Link href="#">A propos</Link></li>
-                    <li><Link href="#">Contact</Link></li>
+                    <li><Link href="/contact">Contact</Link></li>
                    </ul>
             </nav> 
             <div id="toggleSection">
@@ -34,10 +34,12 @@ export default component$(() => {
                     </li>
                     <li>
 
-                        <button class="bg-sky-500 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded" 
+                        <Link
+                        href="/signup/"
+                         class="bg-sky-500 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded" 
                         >
                            S'enregistrer
-                        </button>
+                        </Link>
                         
                     </li>
                 </ul>

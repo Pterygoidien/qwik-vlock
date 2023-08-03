@@ -1,4 +1,4 @@
-import { component$, Slot,useContextProvider, useStore, useStyles$, useVisibleTask$} from "@builder.io/qwik";
+import { component$, Slot,useContextProvider, useStore, useStyles$, useVisibleTask$, useOnDocument, $} from "@builder.io/qwik";
 import { routeLoader$ } from "@builder.io/qwik-city";
 import type { RequestHandler } from "@builder.io/qwik-city";
 
@@ -38,21 +38,21 @@ export default component$(() => {
 
   useContextProvider(ThemeContext, themeStore);
 
-  useVisibleTask$(({track})=>{ 
-    track(()=>{
-      if(themeStore.manualToggle) {
-        localStorage.setItem('theme', themeStore.theme); 
-        document.documentElement.setAttribute('data-theme', themeStore.theme);
-        const html = document.querySelector('html');
-        if(html) html.className = themeStore.theme;
-      }
-    })
-
-    if(!themeStore.manualToggle)
-    {
-      themeStore.theme = localStorage.theme || 'light';
-    }
+  useOnDocument('DOMContentLoaded', $(()=>{
+    const html = document.querySelector('html');
+    if(!themeStore.manualToggle && ('theme' in localStorage))
+      themeStore.theme = localStorage.theme ;
+    if(html) html.className = themeStore.theme;
+    document.documentElement.setAttribute('data-theme', themeStore.theme);
     
+  }));
+
+  useVisibleTask$(({track})=>{ 
+    track(themeStore);
+    localStorage.setItem('theme', themeStore.theme); 
+    document.documentElement.setAttribute('data-theme', themeStore.theme);
+    const html = document.querySelector('html'); //to-do : remove this, and only use [data-theme] attribute for styling
+    if(html) html.className = themeStore.theme;
 
   });
 
