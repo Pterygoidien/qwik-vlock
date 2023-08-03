@@ -1,5 +1,6 @@
 import { component$ } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
+import { Image } from "@unpic/qwik";
 import  Section  from "~/layout/containers/Section";
 
 
@@ -12,7 +13,15 @@ export default component$(() => {
         container={true}
       >
        <h1 class="text-center mb-10">Bienvenue sur v-lock !</h1>
-       <p>
+       <Image 
+          src="../assets/logo/logo-vlock.png" 
+          alt="logo v-lock" 
+          class="mx-auto" 
+          width={300}
+          height={300}
+        />
+        <div class="container-sm pt-12">
+        <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus doloremque, quas similique officiis adipisci recusandae veritatis dignissimos quibusdam iste asperiores quo consequuntur officia consectetur hic cumque maxime autem vitae! Aperiam.
           Sed ipsam aut excepturi distinctio, voluptas totam sapiente laborum laudantium! Iusto fugiat voluptates numquam, ab accusamus illo consectetur officiis similique consequuntur facere sed quis quasi minima, suscipit sint quos. Maiores.
           Aperiam aliquam, enim libero ab nisi expedita error veniam, suscipit, blanditiis ipsa saepe corporis? Harum at veniam quisquam incidunt libero cupiditate repellendus doloribus, architecto possimus. Recusandae debitis corrupti assumenda ab!
@@ -22,6 +31,8 @@ export default component$(() => {
           Obcaecati, ut dolores. Hic eligendi quam qui suscipit, dolorum quas nostrum culpa ea temporibus error! Consectetur quod voluptatum temporibus eum minima quas? Deleniti quas harum nostrum quibusdam! Tempora, aliquam fugiat?
 
        </p>
+        </div>
+       
       </Section>
       <Section
         class="dark:bg-slate-800"
