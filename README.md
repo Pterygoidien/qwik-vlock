@@ -17,3 +17,13 @@ This project implements two things that can be reused :
 ## To-do
 
 1. Color palette as primary variables with postCSS and adjusting darkMode toggle
+
+## Express Server
+
+This app has a minimal [Express server](https://expressjs.com/) implementation. After running a full build, you can preview the build using the command:
+
+```
+npm run serve
+```
+
+Then visit [http://localhost:8080/](http://localhost:8080/)
