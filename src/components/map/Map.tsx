@@ -4,7 +4,8 @@ import {
     useVisibleTask$,
     useStore,
     useSignal,
-    type NoSerialize
+    type NoSerialize,
+
 } from "@builder.io/qwik";
 
 import  L from 'leaflet';
@@ -53,7 +54,6 @@ export default component$(() => {
     }>({
         mapInstance: undefined
     })
-
 
     useVisibleTask$(({track}) => {
         track(() => gpsCoordinates);
@@ -149,6 +149,9 @@ export default component$(() => {
 
         mapStore.mapInstance = noSerialize(map);
        // mapStore.mapInstance = noSerialize(newMap);
+    }, 
+    {
+        strategy: 'document-ready',
     });
 
     return(
