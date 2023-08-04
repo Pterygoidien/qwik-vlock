@@ -65,7 +65,7 @@ export default component$(() => {
         
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {    
             attribution:'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
-            minZoom: 9,
+            minZoom: 7,
             maxZoom: 20,
         }).addTo(map);
         
@@ -103,7 +103,7 @@ export default component$(() => {
         }
 
         const parkingIcon = L.icon({
-            iconUrl: 'http://localhost:5173/assets/map/marker-blue.e938bc99.svg',
+            iconUrl: '/assets/map/marker-blue.e938bc99.svg',
             shadowUrl:'https://unpkg.com/leaflet@1.4.0/dist/images/marker-shadow.png',
             shadowSize: [68, 95],
             shadowAnchor: [18, 80],
