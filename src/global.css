@@ -8,15 +8,37 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+   :root {
+        --color-primary: 125, 211, 252;
+        --color-secondary: 45, 55, 72;
+        --color-tertiary: 0, 0%, 100%;
+   }
+   :root[data-theme='dark'] {
+        --color-primary: 15, 23, 42;
+        --color-secondary: 45, 55, 72;
+        --color-tertiary: 222 47% 11%; 
+   }
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 html, body {
     width: 100%;
     max-width: 100vw;
     height: 100vh;
-
     overflow-x:hidden;
     font-size: calc(14px + 0.002 * 100vw);
     display:grid;
     grid-template-rows: auto 1fr auto;
+}
+
+header{
+    position:sticky;
+    top:0;
+    z-index:3000;
 }
 h1 {
     font-size: 2rem;

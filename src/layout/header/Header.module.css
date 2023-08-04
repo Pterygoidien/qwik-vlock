@@ -1,5 +1,74 @@
-header{
-    position:sticky;
-    top:0;
-    z-index:3000;
+
+#burgerMenu 
+{
+    position:relative;
+
+    user-select: none;
+
+}
+#burgerMenu a {
+    text-decoration:none;
+    font-size:1.5rem;
+    font-weight:600;
+    margin:0 10px;
+    transition:all 0.3s ease-in-out;
+    padding:10px;
+    border-radius:5px;
+    border:1px solid transparent;
+}
+
+#burgerMenu input[type="checkbox"]{
+    display:block;
+    width:40px;
+    height:40px;
+    position:absolute;
+    top:-7px;
+    left:-5px;
+    cursor:pointer;
+    opacity:0; 
+    z-index:2;
+}
+#burgerMenu input[type="checkbox"]:checked ~ span {
+    opacity: 1;
+  transform: rotate(45deg) translate(-2px, -1px);
+  background: #232323;
+}
+#burgerMenu input[type="checkbox"]:checked ~ span:nth-last-child(3) {
+    opacity: 0;
+  transform: rotate(0deg) scale(0.2, 0.2);
+}
+#burgerMenu input[type="checkbox"]:checked ~ span:nth-last-child(2) {
+    transform: rotate(-45deg) translate(-2px, -1px);
+}
+
+
+#burgerMenu:hover {
+    cursor:pointer;
+}
+#burgerMenu  span {
+    display:block;
+    width:30px;
+    height:3px;
+    background-color:white;
+    margin:5px;
+    transition:all 0.3s ease-in-out;
+    border-radius:3px;
+    transform-origin: 4px 0px;
+  
+    transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0), background 0.5s cubic-bezier(0.77,0.2,0.05,1.0), sopacity 0.55s ease;
+
+}
+#burgerMenu__nav {
+    position:absolute;
+    top:50px;
+    left:-5px;
+    width:600px;
+    max-width: 90vw;
+    transform: translate(-130%, 0);
+    background-color:hsl(var(--color-tertiary) / 1);
+  
+  transition: transform 0.7s cubic-bezier(0.77,0.2,0.05,1.0);
+}
+#burgerMenu input[type="checkbox"]:checked ~ #burgerMenu__nav {
+    transform: translate(0%, 0);
 }

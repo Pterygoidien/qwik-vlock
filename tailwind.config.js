@@ -1,11 +1,22 @@
 /** @type {import('tailwindcss').Config} */
+
+const colors = require('tailwindcss/colors');
+
 module.exports = {
   darkMode:['class', '[data-theme="dark"]'],
   content: [
     './src/**/*.{html,ts,tsx,js}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        transparent: 'transparent',
+        current: 'currentColor',
+        primary:"rgb(var(--color-primary) / <alpha-value>)",
+        secondary:"rgb(var(--color-secondary) / <alpha-value>)",
+        tertiary:"hsl(var(--color-tertiary) / <alpha-value>)",
+      },
+    },
     container: {
       center: true,
       padding: {
@@ -25,6 +36,10 @@ module.exports = {
         '4xl': "2560px",
       },
     },
+
+   
+    
+
   
   },
   plugins: [],

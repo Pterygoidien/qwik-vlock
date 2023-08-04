@@ -1,24 +1,38 @@
-import { component$, useStylesScoped$ } from "@builder.io/qwik";
+import { component$ } from "@builder.io/qwik";
 import { Image } from "@unpic/qwik";
 
-import styles from "./Header.module.css?inline";
+
 import { Link } from "@builder.io/qwik-city";
 import ThemeToggle from "~/components/interactives/ThemeToggle";
+import styles from  "./Header.module.css";
 
 export default component$(() => {
-    useStylesScoped$(styles);
-    
 
+
+    
     return (
         <header class="flex">
         <div class="container flex items-center justify-between mx-auto py-4 rounded-b-lg bg-white dark:bg-slate-900">
+            <div id={styles.burgerMenu} class="lg:hidden">
+                <input type="checkbox"/>
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+                <ul id={styles['burgerMenu__nav']} class="bg-primary">
+                    <li><Link href="/">Accueil</Link></li>
+                    <li><Link href="#">Abonnements</Link></li>
+
+                </ul>
+            </div>
             <Image 
                 src="/assets/logo/logo-vlock.png"
                 alt="logo"
                 width="100"
                 height="100" 
             />
-            <nav class="flex-grow uppercase font-bold ">
+            <nav class="flex-grow uppercase font-bold hidden lg:block">
                 <ul class="flex gap-3 items-center mx-auto items-center justify-center self-center">
                     <li><Link href="/">Accueil</Link></li>
                     <li><Link href="#">Abonnements</Link></li>

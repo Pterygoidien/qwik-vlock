@@ -38,7 +38,7 @@ export default component$(() => {
         class="dark:bg-slate-800"
       >
         <h2>Nos services</h2>
-        <div class="flex gap-8">
+        <div class="flex flex-wrap gap-8">
         <article>
           <h3>Service 1</h3>
           <p>

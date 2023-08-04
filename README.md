@@ -17,6 +17,9 @@ This project implements two things that can be reused :
 ## To-do
 
 1. Color palette as primary variables with postCSS and adjusting darkMode toggle
+2. Add a geocoder to the map
+3. Add layers to the Map
+4. Add admin panel
 
 ## Express Server
 
