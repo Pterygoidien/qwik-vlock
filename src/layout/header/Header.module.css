@@ -1,8 +1,15 @@
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
 
 #burgerMenu 
 {
     position:relative;
     user-select: none;
+    z-index:1003;
 
 }
 #burgerMenu a {
@@ -29,7 +36,7 @@
 }
 #burgerMenu input[type="checkbox"]:checked ~ span {
 
-  transform: rotate(45deg) translate(0.5px, 0.5px);
+  transform: rotate(45deg) translate(2px, -2px);
 
 }
 #burgerMenu input[type="checkbox"]:checked ~ span:nth-last-child(3) {
@@ -60,11 +67,11 @@
 #burgerMenu__nav {
     position:absolute;
     top:48px;
-    left:-65px;
+    left:-75px;
     width:700px;
     padding:100px;
     max-width: 100vw;
-    transform: translate(-100%, 0);
+    transform: translate(-120%, 0);
     background-color:hsl(var(--color-tertiary) / 0.95);
   
   transition: transform 0.7s cubic-bezier(0.77,0.2,0.05,1.0);

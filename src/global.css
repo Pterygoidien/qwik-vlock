@@ -35,11 +35,7 @@ html, body {
     grid-template-rows: auto 1fr auto;
 }
 
-header{
-    position:sticky;
-    top:0;
-    z-index:3000;
-}
+
 h1 {
     font-size: 2rem;
     font-weight: 700;

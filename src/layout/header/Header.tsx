@@ -20,9 +20,10 @@ export default component$(() => {
                 <span></span>
                 <span></span>
 
-                <ul id={styles['burgerMenu__nav']} class="bg-primary">
+                <ul id={styles['burgerMenu__nav']} class="bg-primary flex flex-col gap-4">
                     <li><Link href="/">Accueil</Link></li>
                     <li><Link href="#">Abonnements</Link></li>
+                    <li><Link href="/parkings/" class="bg-sky-500 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded dark:bg-sky-200 dark:text-black py-4">Carte des parkings</Link></li>
 
                 </ul>
             </div>
