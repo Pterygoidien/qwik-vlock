@@ -16,7 +16,7 @@
    }
    :root[data-theme='dark'] {
         --color-primary: 15, 23, 42;
-        --color-secondary: 45, 55, 72;
+        --color-secondary: 45 55 72;
         --color-tertiary: 222 47% 11%; 
    }
 }

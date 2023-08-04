@@ -50,7 +50,7 @@ export default component$(() => {
 
                         <Link
                         href="/signup/"
-                         class="bg-sky-500 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded" 
+                         class="bg-sky-500 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded hidden lg:block" 
                         >
                            S'enregistrer
                         </Link>
