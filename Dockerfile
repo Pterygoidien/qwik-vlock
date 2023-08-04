@@ -28,6 +28,7 @@ WORKDIR /usr/src/app
 # We do this to keep the final image as small as possible
 COPY --from=build /usr/src/app/node_modules ./node_modules
 COPY --from=build /usr/src/app/server ./server
+COPY --from=build /usr/src/app/public ./public
 COPY --from=build /usr/src/app/dist ./dist
 
 # Expose port 3000 (default port)
