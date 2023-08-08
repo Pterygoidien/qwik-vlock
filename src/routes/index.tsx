@@ -14,7 +14,7 @@ export default component$(() => {
       >
        <h1 class="text-center mb-10">Bienvenue sur v-lock !</h1>
        <Image 
-          src="../assets/logo/logo-vlock.png" 
+          src="/assets/logo/vlock_logo.png" 
           alt="logo v-lock" 
           class="mx-auto" 
           width={300}
