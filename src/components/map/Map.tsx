@@ -59,13 +59,15 @@ export default component$((props) => {
     })
 
 
+    
+
     useVisibleTask$(({track}) => {
         track(() => gpsCoordinates);
         track(() => parkingStore);
 
-
         const map = L.map('map')
-            .setView([defaultCoordinates.lat, defaultCoordinates.long], 13);
+        .setView([defaultCoordinates.lat, defaultCoordinates.long], 13);
+        
         
         
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {    
@@ -133,7 +135,9 @@ export default component$((props) => {
                     className: 'mclusters' + c,
                     iconSize: new L.Point(70, 70)
                 });
-            }
+            },
+            maxClusterRadius: 80,
+            zIndexOffset: 992,
             
         });
 
@@ -165,7 +169,7 @@ export default component$((props) => {
         const rackCluster = new MarkerClusterGroup({
             iconCreateFunction: function(cluster:any) {
                 const childCount = cluster.getChildCount();
-                let c = ' mclusters-';
+                let c = ' rclusters-';
                 if (childCount < 10) {
                     c += 'small';
                 } else if (childCount < 100) {
@@ -178,7 +182,9 @@ export default component$((props) => {
                     className: 'mclusters' + c,
                     iconSize: new L.Point(70, 70)
                 });
-            }
+            },
+            maxClusterRadius: 80,
+            zIndexOffset: 992,
             
         });
 
