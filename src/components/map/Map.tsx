@@ -153,11 +153,11 @@ export default component$((props) => {
         }
 
         const rackIcon = L.icon({
-            iconUrl: '/assets/map/rack.svg',
+            iconUrl: '/assets/map/icon_rack.svg',
             shadowUrl:'https://unpkg.com/leaflet@1.4.0/dist/images/marker-shadow.png',
-            shadowSize: [68, 95],
+            shadowSize: [40, 60],
             shadowAnchor: [18, 80],
-            iconSize: [80, 80],
+            iconSize: [60, 60],
             iconAnchor: [40, 65],
             popupAnchor: [-2, -40],
         });
@@ -185,15 +185,12 @@ export default component$((props) => {
         try {
             racks.forEach((rack) => {
                 const coordinates = rack.coordinates.split(',');
-
-                
-
                 L.marker(new L.LatLng(coordinates[0], coordinates[1]), {
 
                     icon: rackIcon,
                     title: rack.address,
                 }).bindPopup(
-                    `<h4>${rack.address}</h4><p>${rack.description}</p><p>Capacité: ${rack.capacity}</p><p>Disponibilité: ${rack.capacity*2}</p>`
+                    `<h4 class="font-semibold font-lg">${rack.address}</h4><p>${rack.description}</p><p><span class="font-semibold">Nombre</span>: ${rack.capacity/2}</p><p><span class="font-semibold">Places disponibles:</span> ${rack.capacity}</p>`
                 ).addTo(rackCluster);
 
             })
