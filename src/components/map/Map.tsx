@@ -12,6 +12,7 @@ import 'leaflet/dist/leaflet.css';
 import  {MarkerClusterGroup }  from 'leaflet.markercluster/dist/leaflet.markercluster.js';
 import './clusters.css';
 import parkingLocations from './parking-locations.json';
+import { IRackAPI } from "~/routes/parkings";
 
 interface IMapCoordinates {
     lat: number;
@@ -30,7 +31,10 @@ interface IParking {
     capacity:number,
 }
 
-export default component$(() => {
+export default component$((props) => {
+
+    const racks = props.racks.value;
+    
 
 
     const defaultCoordinates:IMapCoordinates = {
@@ -58,6 +62,7 @@ export default component$(() => {
     useVisibleTask$(({track}) => {
         track(() => gpsCoordinates);
         track(() => parkingStore);
+
 
         const map = L.map('map')
             .setView([defaultCoordinates.lat, defaultCoordinates.long], 13);
@@ -142,6 +147,57 @@ export default component$(() => {
 
             })
             parkingCluster.addTo(map);
+        } catch(err) {
+            console.log(err);
+
+        }
+
+        const rackIcon = L.icon({
+            iconUrl: '/assets/map/rack.svg',
+            shadowUrl:'https://unpkg.com/leaflet@1.4.0/dist/images/marker-shadow.png',
+            shadowSize: [68, 95],
+            shadowAnchor: [18, 80],
+            iconSize: [80, 80],
+            iconAnchor: [40, 65],
+            popupAnchor: [-2, -40],
+        });
+
+        const rackCluster = new MarkerClusterGroup({
+            iconCreateFunction: function(cluster:any) {
+                const childCount = cluster.getChildCount();
+                let c = ' mclusters-';
+                if (childCount < 10) {
+                    c += 'small';
+                } else if (childCount < 100) {
+                    c += 'medium';
+                } else {
+                    c += 'large';
+                }
+                return new L.DivIcon({
+                    html: '<div><span>' + childCount + '</span></div>',
+                    className: 'mclusters' + c,
+                    iconSize: new L.Point(70, 70)
+                });
+            }
+            
+        });
+
+        try {
+            racks.forEach((rack) => {
+                const coordinates = rack.coordinates.split(',');
+
+                
+
+                L.marker(new L.LatLng(coordinates[0], coordinates[1]), {
+
+                    icon: rackIcon,
+                    title: rack.address,
+                }).bindPopup(
+                    `<h4>${rack.address}</h4><p>${rack.description}</p><p>Capacité: ${rack.capacity}</p><p>Disponibilité: ${rack.capacity*2}</p>`
+                ).addTo(rackCluster);
+
+            })
+            rackCluster.addTo(map);
         } catch(err) {
             console.log(err);
 

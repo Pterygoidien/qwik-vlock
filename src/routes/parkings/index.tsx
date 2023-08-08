@@ -1,39 +1,40 @@
-import { component$, useSignal, useStore,    useVisibleTask$ } from "@builder.io/qwik";
+import { component$} from "@builder.io/qwik";
+import { routeLoader$ } from "@builder.io/qwik-city";
 import Map from "~/components/map/Map";
+
+
+export interface IRackAPI {
+    id: number,
+        coordinates: string,
+        address:string,
+        type:string,
+        description:string,
+        capacity:number,
+        icar_street_id:number
+}
+
+
+
+export const useRacks = routeLoader$(async() => {
+    const data = await fetch('http://127.0.0.1:8000/api/map/mapitems', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    });
+
+
+
+    return await data.json()
+    
+})
+
 
 export default component$(() => {
 
-    const gpsCoordinates = useStore<{x:number | null,y:number | null}>({
-        x: null, //50.64250,
-        y: null, //5.58570,
-    })
-
-    const coordinatesLoaded = useSignal<boolean>(false);
+    const racks = useRacks();
 
 
-
-    useVisibleTask$(({track}) => {
-        track(()=>
-        {
-            try {
-                navigator.geolocation.getCurrentPosition((position) => {
-                    gpsCoordinates.x = position.coords.latitude;
-                    gpsCoordinates.y = position.coords.longitude;
-                    coordinatesLoaded.value = true;
-                })   
-            }
-            catch (error) {
-                coordinatesLoaded.value = true;
-            }
-
-        });
-
-        //todo : first render Map.tsx with default coordinates
-        // then, send the updates GPS coordinates, in Map.tsx, to a track for the coordinates that then calls the function map.setView thereafter
-        //so that the map loads first, then the coordinates are updated and the map is centered on the user's location
-
-          
-    });
     //now let's do it with useTask instead
 
    
@@ -43,7 +44,7 @@ export default component$(() => {
         <>
             <section>
                 
-                <Map />
+                <Map racks={racks}/>
             </section>
         </>
     )
