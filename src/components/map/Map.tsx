@@ -238,13 +238,6 @@ export default component$((props) => {
         track(() => gpsCoordinates);
         track(() => parkingStore);
 
-        
-        
-        
-        
-
-        
-
         try {
             navigator.geolocation.getCurrentPosition((position) => {
                 gpsCoordinates.lat = position.coords.latitude;
@@ -382,7 +375,7 @@ export default component$((props) => {
     return(
         <>
         <div id="map" ref={mapRef} style={{height: "calc(100vh - 100px)", maxHeight:"calc(100vh - 100px)", overflow: "hidden"}}>
-           
+           {mapStore.mapInstance ? null : 'loading...'}
         </div>
         </>
         );
