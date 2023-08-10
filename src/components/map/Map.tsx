@@ -190,6 +190,7 @@ export default component$((props) => {
 
         try {
             racks.forEach((rack) => {
+
                 const coordinates = rack.coordinates.split(',');
                 L.marker(new L.LatLng(coordinates[0], coordinates[1]), {
 
