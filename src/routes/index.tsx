@@ -18,7 +18,7 @@ export default component$(() => {
           alt="logo v-lock" 
           class="mx-auto" 
           width={300}
-          height={300}
+          height={115.94}
         />
         <div class="container pt-12">
         <p>
