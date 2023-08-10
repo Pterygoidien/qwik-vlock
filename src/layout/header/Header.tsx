@@ -31,7 +31,7 @@ export default component$(() => {
                 src="/assets/logo/logo-vlock.png"
                 alt="logo"
                 width="100"
-                height="100" 
+                height="37.67" 
             />
             <nav class="flex-grow uppercase font-bold hidden lg:block">
                 <ul class="flex gap-3 items-center mx-auto items-center justify-center self-center">
