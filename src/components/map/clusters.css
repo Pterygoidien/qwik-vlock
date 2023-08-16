@@ -19,6 +19,28 @@
 	background-color: rgba(25, 45, 147, 0.6);
 	}
 
+.rclusters-small {
+	background-color: rgba(40, 233, 137, 0.611);
+	}
+.rclusters-small div {
+	background-color: rgba(20, 173, 59, 0.6);
+	}
+
+.rclusters-medium {
+    background-color: rgba(11, 155, 30, 0.671);
+	}
+.rclusters-medium div {
+    background-color: rgba(29, 78, 10, 0.456);
+	}
+
+.rclusters-large {
+	background-color: rgba(44, 135, 16, 0.6);
+	}
+.rclusters-large div {
+	background-color: rgba(11, 83, 9, 0.6);
+	}
+
+	
 	/* IE 6-8 fallback colors */
 .leaflet-oldie .mclusters-small {
 	background-color: rgba(25, 45, 147, 0.6);
@@ -41,7 +63,7 @@
 	background-color: rgba(25, 45, 147, 0.6);
 }
 
-.mclusters {
+.mclusters, .rclusters {
 	background-clip: padding-box;
 	border-radius: 40px;
 	width:70px;
@@ -54,7 +76,7 @@
 	align-items:center;
 
 	}
-.mclusters div {
+.mclusters div, .rclusters div {
 	width: 50px;
 	height: 50px;
 	margin:auto;
@@ -67,7 +89,7 @@
 	border-radius: 50%;
 	font: 18px "Helvetica Neue", Arial, Helvetica, sans-serif;
 	}
-.mclusters span {
+.mclusters span, .rclusters span {
 	line-height: 30px;
 	color:white;
 	text-align: center;

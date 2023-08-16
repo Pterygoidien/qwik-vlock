@@ -12,6 +12,7 @@ import 'leaflet/dist/leaflet.css';
 import  {MarkerClusterGroup }  from 'leaflet.markercluster/dist/leaflet.markercluster.js';
 import './clusters.css';
 import parkingLocations from './parking-locations.json';
+import { IRackAPI } from "~/routes/parkings";
 
 interface IMapCoordinates {
     lat: number;
@@ -30,7 +31,10 @@ interface IParking {
     capacity:number,
 }
 
-export default component$(() => {
+export default component$((props) => {
+
+    const racks = props.racks.value;
+    
 
 
     const defaultCoordinates:IMapCoordinates = {
@@ -55,12 +59,15 @@ export default component$(() => {
     })
 
 
+    
+
     useVisibleTask$(({track}) => {
         track(() => gpsCoordinates);
         track(() => parkingStore);
 
         const map = L.map('map')
-            .setView([defaultCoordinates.lat, defaultCoordinates.long], 13);
+        .setView([defaultCoordinates.lat, defaultCoordinates.long], 13);
+        
         
         
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {    
@@ -128,7 +135,9 @@ export default component$(() => {
                     className: 'mclusters' + c,
                     iconSize: new L.Point(70, 70)
                 });
-            }
+            },
+            maxClusterRadius: 80,
+            zIndexOffset: 992,
             
         });
 
@@ -142,6 +151,56 @@ export default component$(() => {
 
             })
             parkingCluster.addTo(map);
+        } catch(err) {
+            console.log(err);
+
+        }
+
+        const rackIcon = L.icon({
+            iconUrl: '/assets/map/icon_rack.svg',
+            shadowUrl:'https://unpkg.com/leaflet@1.4.0/dist/images/marker-shadow.png',
+            shadowSize: [40, 60],
+            shadowAnchor: [18, 80],
+            iconSize: [60, 60],
+            iconAnchor: [40, 65],
+            popupAnchor: [-2, -40],
+        });
+
+        const rackCluster = new MarkerClusterGroup({
+            iconCreateFunction: function(cluster:any) {
+                const childCount = cluster.getChildCount();
+                let c = ' rclusters-';
+                if (childCount < 10) {
+                    c += 'small';
+                } else if (childCount < 100) {
+                    c += 'medium';
+                } else {
+                    c += 'large';
+                }
+                return new L.DivIcon({
+                    html: '<div><span>' + childCount + '</span></div>',
+                    className: 'mclusters' + c,
+                    iconSize: new L.Point(70, 70)
+                });
+            },
+            maxClusterRadius: 80,
+            zIndexOffset: 992,
+            
+        });
+
+        try {
+            racks.forEach((rack) => {
+                const coordinates = rack.coordinates.split(',');
+                L.marker(new L.LatLng(coordinates[0], coordinates[1]), {
+
+                    icon: rackIcon,
+                    title: rack.address,
+                }).bindPopup(
+                    `<h4 class="font-semibold font-lg">${rack.address}</h4><p>${rack.description}</p><p><span class="font-semibold">Nombre</span>: ${rack.capacity/2}</p><p><span class="font-semibold">Places disponibles:</span> ${rack.capacity}</p>`
+                ).addTo(rackCluster);
+
+            })
+            rackCluster.addTo(map);
         } catch(err) {
             console.log(err);
 
