@@ -1,4 +1,4 @@
-import { component$} from "@builder.io/qwik";
+import { component$ } from "@builder.io/qwik";
 import {
   QwikCityProvider,
   RouterOutlet,
@@ -7,6 +7,7 @@ import {
 import { RouterHead } from "./components/router-head/router-head";
 
 import "./global.css";
+import { useI18n } from "./i18n";
 
 export default component$(() => {
   /**
@@ -15,25 +16,24 @@ export default component$(() => {
    *
    * Don't remove the `<head>` and `<body>` elements.
    */
-
- 
-
+  useI18n();
   return (
-
     <QwikCityProvider>
       <head>
         <meta charSet="utf-8" />
         <link rel="manifest" href="/manifest.json" />
         <RouterHead />
-        <script dangerouslySetInnerHTML={`
+        <script
+          dangerouslySetInnerHTML={`
           if(localStorage.theme=='dark' ||  (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             document.documentElement.setAttribute('data-theme', 'dark');
           }
-        `} />
+        `}
+        />
 
         <ServiceWorkerRegister />
       </head>
-      <body lang="fr" class="bg-tertiary dark:text-white">
+      <body class="bg-tertiary dark:text-white">
         <RouterOutlet />
       </body>
     </QwikCityProvider>

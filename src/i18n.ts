@@ -8,7 +8,7 @@ import EN from "./locale/message.en.json";
 import FR from "./locale/message.fr.json";
 
 // Make sure it's obvious when the default locale was selected
-const defaultLocale = "sk";
+const defaultLocale = "fr";
 
 /**
  * Function used to load all translations variants.
