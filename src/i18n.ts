@@ -80,6 +80,8 @@ export function extractLang(request: Request, url: URL): string {
     locale = validateLocale(locale);
     if (locale) return locale;
   }
+
+  console.log("  ➜  Extracting locale from request...");
   // Parse the browser accept-language header
   const locales = request.headers.get("accept-language")?.split(",");
   if (locales)
@@ -88,6 +90,7 @@ export function extractLang(request: Request, url: URL): string {
       if (locale) return locale;
     }
 
+  // If we get here, we didn't find a valid locale, so we return the default
   return defaultLocale;
 }
 
