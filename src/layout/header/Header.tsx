@@ -45,24 +45,24 @@ export default component$(() => {
         <nav class="flex-grow uppercase font-bold hidden lg:block">
           <ul class="flex gap-3 mx-auto items-center justify-center self-center">
             <li>
-              <Link href="/">Accueil</Link>
+              <Link href="./">{$localize`Home`}</Link>
             </li>
             <li>
-              <Link href="#">Abonnements</Link>
+              <Link href="./">{$localize`Subscriptions`} </Link>
             </li>
             <li>
               <Link
                 href="/parkings/"
                 class="bg-sky-500 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded dark:bg-sky-200 dark:text-black"
               >
-                Carte des parkings
+                {$localize`Parking map`}
               </Link>
             </li>
             <li>
-              <Link href="#">A propos</Link>
+              <Link href="#">{$localize`About`}</Link>
             </li>
             <li>
-              <Link href="/contact">Contact</Link>
+              <Link href="/contact">{$localize`Contact`}</Link>
             </li>
           </ul>
         </nav>
