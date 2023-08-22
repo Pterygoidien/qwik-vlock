@@ -7,8 +7,8 @@ import styles from "./Header.module.css";
 
 export default component$(() => {
   return (
-    <header class="flex">
-      <div class="container flex items-center justify-between mx-auto py-4 rounded-b-lg bg-white dark:bg-slate-900">
+    <header id="main-header" class="bg-transparent">
+      <div class="container flex items-center justify-between mx-auto opacity-95 p-4 rounded-b-xl bg-white dark:bg-slate-900">
         <div id={styles.burgerMenu} class="lg:hidden">
           <input type="checkbox" />
 
@@ -21,18 +21,13 @@ export default component$(() => {
             class="bg-primary flex flex-col gap-4"
           >
             <li>
-              <Link href="/">Accueil</Link>
+              <Link href="./">Accueil</Link>
             </li>
             <li>
-              <Link href="#">Abonnements</Link>
+              <Link href="./subscriptions">Abonnements</Link>
             </li>
             <li>
-              <Link
-                href="/parkings/"
-                class="bg-sky-500 hover:bg-sky-700 text-white font-bold px-4 rounded dark:bg-sky-200 dark:text-black py-4"
-              >
-                Carte des parkings
-              </Link>
+              <Link href="/parkings/">Carte des parkings</Link>
             </li>
           </ul>
         </div>
@@ -48,21 +43,21 @@ export default component$(() => {
               <Link href="./">{$localize`Home`}</Link>
             </li>
             <li>
-              <Link href="./">{$localize`Subscriptions`} </Link>
+              <Link href="./subscriptions">{$localize`Subscriptions`} </Link>
             </li>
             <li>
               <Link
-                href="/parkings/"
+                href="./parkings/"
                 class="bg-sky-500 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded dark:bg-sky-200 dark:text-black"
               >
                 {$localize`Parking map`}
               </Link>
             </li>
             <li>
-              <Link href="#">{$localize`About`}</Link>
+              <Link href="./about">{$localize`About`}</Link>
             </li>
             <li>
-              <Link href="/contact">{$localize`Contact`}</Link>
+              <Link href="./contact">{$localize`Contact`}</Link>
             </li>
           </ul>
         </nav>
@@ -72,12 +67,15 @@ export default component$(() => {
               <ThemeToggle />
             </li>
             <li>
-              <Link
-                href="/signup/"
-                class="bg-sky-500 hover:bg-sky-700 text-white font-bold px-4 rounded hidden lg:block"
+              <select
+                id="lang-select"
+                class="bg-tertiary border-[1px] rounded-xl px-2 py-[5px] border-slate-800"
               >
-                S'enregistrer
-              </Link>
+                <option value="fr">Français</option>
+                <option value="nl">Nederlands</option>
+                <option value="en">English</option>
+                <option value="de">Deutsch</option>
+              </select>
             </li>
           </ul>
         </div>

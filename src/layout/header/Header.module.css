@@ -3,79 +3,67 @@ header{
     top:0;
     z-index:1000;
 }
-
-
-#burgerMenu 
-{
-    position:relative;
+  #burgerMenu {
+    position: relative;
     user-select: none;
-    z-index:1003;
+    z-index: 103;
+  }
+  #burgerMenu a {
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0 10px;
+    transition: all 0.3s ease-in-out;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid transparent;
+  }
 
-}
-#burgerMenu a {
-    text-decoration:none;
-    font-size:1.5rem;
-    font-weight:600;
-    margin:0 10px;
-    transition:all 0.3s ease-in-out;
-    padding:10px;
-    border-radius:5px;
-    border:1px solid transparent;
-}
-
-#burgerMenu input[type="checkbox"]{
-    display:block;
-    width:40px;
-    height:40px;
-    position:absolute;
-    top:-7px;
-    left:-5px;
-    cursor:pointer;
-    opacity:0; 
-    z-index:2;
-}
-#burgerMenu input[type="checkbox"]:checked ~ span {
-
-  transform: rotate(45deg) translate(2px, -2px);
-
-}
-#burgerMenu input[type="checkbox"]:checked ~ span:nth-last-child(3) {
+  #burgerMenu input[type="checkbox"] {
+    display: block;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: -7px;
+    left: -5px;
+    cursor: pointer;
     opacity: 0;
-  transform: rotate(0deg) scale(0.2, 0.2);
-}
-#burgerMenu input[type="checkbox"]:checked ~ span:nth-last-child(2) {
-    transform: rotate(-45deg) translate(0, -1px);
-}
+    z-index: 2;
+  }
 
-
-#burgerMenu:hover {
-    cursor:pointer;
-}
-#burgerMenu  span {
-    display:block;
-    width:30px;
-    height:3px;
-    background-color:white;
-    margin:5px;
-    transition:all 0.3s ease-in-out;
-    border-radius:3px;
+  #burgerMenu:hover {
+    cursor: pointer;
+  }
+  #burgerMenu span {
+    display: block;
+    width: 30px;
+    height: 3px;
+    background-color: white;
+    margin: 5px;
+    transition: all 0.3s ease-in-out;
+    border-radius: 3px;
     transform-origin: 4px 0px;
-  
-    transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0), background 0.5s cubic-bezier(0.77,0.2,0.05,1.0), sopacity 0.55s ease;
 
-}
-#burgerMenu__nav {
-    position:absolute;
-    top:48px;
-    left:-75px;
-    width:700px;
-    padding:100px;
+    transition:
+      transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
+      background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
+      sopacity 0.55s ease;
+  }
+  :root[data-theme="light"] #burgerMenu span {
+    background-color: hsl(210 10% 15%);
+  }
+  #burgerMenu__nav {
+    position: absolute;
+    top: 28px;
+    left: -75px;
+    width: 700px;
+    padding: 100px;
     max-width: 100vw;
     transform: translate(-120%, 0);
-    background-color:hsl(var(--color-tertiary) / 0.95);
-  
-  transition: transform 0.7s cubic-bezier(0.77,0.2,0.05,1.0);
-}
-#burgerMenu input[type="checkbox"]:checked ~ #burgerMenu__nav {
+    background-color: hsl(var(--color-tertiary) / 0.95);
+
+    transition: transform 0.7s cubic-bezier(0.77, 0.2, 0.05, 1);
+  }
+  #burgerMenu input[type="checkbox"]:checked ~ #burgerMenu__nav {
     transform: translate(0%, 0);
-}
+  }
