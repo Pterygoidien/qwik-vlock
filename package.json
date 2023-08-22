@@ -16,6 +16,8 @@
     "dev.debug": "node --inspect-brk ./node_modules/vite/bin/vite.js --mode ssr --force",
     "fmt": "prettier --write .",
     "fmt.check": "prettier --check .",
+    "i18n-extract": "D:/programmation/web/qwik-vlock/node_modules/.bin/localize-extract -s \"dist/build/*.js\" -f json -o src/locale/message.en.json",
+    "i18n-translate": "D:/programmation/web/qwik-vlock/node_modules/.bin/localize-translate -s \"*.js\" -t src/locale/message.*.json -o dist/build/{{LOCALE}} -r ./dist/build",
     "lint": "eslint \"src/**/*.ts*\"",
     "preview": "qwik build preview && vite preview --open",
     "serve": "node server/entry.express",
@@ -23,6 +25,8 @@
     "qwik": "qwik"
   },
   "devDependencies": {
+    "@angular/compiler": "^16.1.5",
+    "@angular/compiler-cli": "^16.1.5",
     "@builder.io/qwik": "^1.2.6",
     "@builder.io/qwik-city": "^1.2.6",
     "@types/compression": "^1.7.2",
@@ -35,10 +39,10 @@
     "@typescript-eslint/eslint-plugin": "5.61.0",
     "@typescript-eslint/parser": "5.61.0",
     "autoprefixer": "^10.4.14",
-    "compression": "^1.7.4",
     "eslint": "8.44.0",
     "eslint-plugin-qwik": "^1.2.6",
     "express": "4.18.2",
+    "node-fetch":"^3.3.1",
     "postcss": "^8.4.23",
     "prettier": "2.8.8",
     "tailwindcss": "^3.3.1",
@@ -48,6 +52,8 @@
     "vite-tsconfig-paths": "4.2.0"
   },
   "dependencies": {
+    "@angular/localize": "^16.1.5",
+    "compression":"^1.7.4",
     "@unpic/qwik": "^0.0.24",
     "leaflet": "^1.9.4",
     "leaflet.markercluster": "^1.5.3"
